@@ -1,0 +1,32 @@
+####################
+Creation bytecode
+####################
+# Free memory
+000 PUSH1 80 (6080)
+002 PUSH1 40 (6040)
+004 MSTORE   (52)
+# Load runtime bytecode to memory
+005 PUSH1 0a (600a) # runtime code size
+007 PUSH1 11 (6011) # 0x11 is line 17, the start of the runtime code
+009 PUSH1 80 (6080) # starting location in memory
+011 CODECOPY (39) # copy 0x0a (10) bytes of code at code location (xx) to memory location 0x80
+012 PUSH1 0a (600a)
+014 PUSH1 80 (6080)
+016 RETURN # (f3) return 0x0a bytes of memory starting at memory location 0x80
+
+####################
+Runtime bytecode
+####################
+# Runtime bytecode
+## Total bytes: 10 (0xa)
+017 PUSH1 2a (602a) # 42 in decimal
+019 PUSH1 80 (6080) # free memory location
+021 MSTORE   (52)
+022 PUSH1 20 (6020)
+024 PUSH1 80 (6080)
+026 RETURN   (f3)
+
+####################
+All of the bytecode put together
+####################
+0x6080604052600a6011608039600a6080f3602a60805260206080f3
